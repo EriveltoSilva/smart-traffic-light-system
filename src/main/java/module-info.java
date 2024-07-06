@@ -3,6 +3,7 @@ module com.example.smarttrafficlight {
     requires javafx.fxml;
 
     requires org.kordamp.bootstrapfx.core;
+    requires com.fazecast.jSerialComm;
 
     opens com.example.smarttrafficlight to javafx.fxml;
     exports com.example.smarttrafficlight;
