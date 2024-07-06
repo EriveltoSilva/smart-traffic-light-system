@@ -1,19 +1,24 @@
 package com.example.smarttrafficlight.controllers;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm.SerialPortDataListener;
+import com.fazecast.jSerialComm.SerialPortEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import serialcommunication.PacketListener;
 
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     private SerialPort serialPort;
     private Integer statusLed =0;
+    private final StringBuilder dataBuffer = new StringBuilder();
 
     @FXML
     private Button btnConnect;
@@ -41,13 +46,20 @@ public class MainController implements Initializable {
 
 
     @FXML
-    public void handleToggleLedButton(){
+    public void handleToggleLedButton() {
         if(this.serialPort==null || !this.serialPort.isOpen()) {
             showAlert(Alert.AlertType.ERROR, "Envio de Comando", "Erro enviando comando.\nPrimeiro se conecte ao arduino!");
             return ;
         }
         PrintWriter arduino = new PrintWriter(this.serialPort.getOutputStream());
-        arduino.println(statusLed.toString());
+        if(statusLed==0){
+            arduino.print("1");
+            statusLed=1;
+        }
+        else {
+            arduino.print("0");
+            statusLed=0;
+        }
         arduino.flush();
         arduino.close();
     }
@@ -63,8 +75,7 @@ public class MainController implements Initializable {
         }
     }
 
-    private void showAlert(Alert.AlertType type, String title, String message)
-    {
+    private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -72,9 +83,18 @@ public class MainController implements Initializable {
         alert.showAndWait();
     }
 
-    private boolean isCommPortValid(String commName)
-    {
+    private boolean isCommPortValid(String commName) {
         return (commName!=null && !commName.isBlank() && !commName.isEmpty());
+    }
+
+    private void processReceivedData(String data) {
+        dataBuffer.append(data);
+        int index;
+        while ((index = dataBuffer.indexOf("\n")) != -1) {
+            String completeData = dataBuffer.substring(0, index).replaceAll("\\s+", "");
+            dataBuffer.delete(0, index + 1);
+            System.out.println("Complete data received: " + completeData);
+        }
     }
 
     private void connectSerial(){
@@ -86,13 +106,56 @@ public class MainController implements Initializable {
         }
 
         this.serialPort = SerialPort.getCommPort(commPortSelected);
-        this.serialPort.setComPortParameters(9600, 8, 1, 0);
+        this.serialPort.setComPortParameters(9600, Byte.SIZE, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
         this.serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
 
         if(!this.serialPort.openPort()){
             showAlert(Alert.AlertType.ERROR, "Erro!", "ERROR: A PORTA COM NÃO ESTA DISPONIVEL");
             return;
         }
+
+        this.serialPort.addDataListener(new SerialPortDataListener() {
+            @Override
+            public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_RECEIVED; }
+            //.split("\n", 2)[0].replaceAll("\\s+", "");
+            @Override
+            public void serialEvent(SerialPortEvent event)
+            {
+                byte[] newData = event.getReceivedData();
+                String str = new String(newData);
+                processReceivedData(str);
+                //System.out.println("Received data of size:" + newData.length);
+                //System.out.println("String received:"+str);
+            }
+        });
+
+        /*
+        for(byte data : newData)
+                {
+                    char rx = (char) data;
+                    System.out.print(rx);
+                }
+                for (int i = 0; i < newData.length; ++i)
+                {
+                    char rx = (char)newData[i];
+                    System.out.print(rx);
+                }
+        this.serialPort.addDataListener(new SerialPortDataListener() {
+            @Override
+            public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
+            @Override
+            public void serialEvent(SerialPortEvent event)
+            {
+                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE)
+                    return;
+                byte[] newData = new byte[serialPort.bytesAvailable()];
+                int numRead = serialPort.readBytes(newData, newData.length);
+                System.out.println("Read " + numRead + " bytes.");
+                System.out.println("Leitura:"+newData.toString());
+                System.out.println("Leitura2:"+new String(newData, StandardCharsets.UTF_8));
+            }
+        });*/
+
         btnConnect.setText("Desconectar");
         comboSerialPort.setDisable(true);
         showAlert(Alert.AlertType.CONFIRMATION, "Sucesso!", "Comunição estabelecida com sucesso!");

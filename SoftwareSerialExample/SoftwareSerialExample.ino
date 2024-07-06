@@ -21,17 +21,21 @@ void loop()
   
   if (Serial.available()) 
   {
-    String rx = Serial.readString();
-    rx.replace("\n","");
-    if(rx.equalsIgnoreCase("1"))
+    while(Serial.available())
     {
-      digitalWrite(LED, HIGH);
-      Serial.println("LED ON");
-    }
-    else if(rx.equalsIgnoreCase("0"))
-    {
-      Serial.println("LED OFF");
-      digitalWrite(LED,LOW);
+      char rx = Serial.read();
+      Serial.println(rx);
+      /*rx.replace("\n","");
+      if(rx.equalsIgnoreCase("1"))
+      {
+        digitalWrite(LED, HIGH);
+        Serial.println("LED ON");
+      }
+      else if(rx.equalsIgnoreCase("0"))
+      {
+        Serial.println("LED OFF");
+        digitalWrite(LED,LOW);
+      }*/
     }
   }
 
