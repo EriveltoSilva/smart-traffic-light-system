@@ -3,11 +3,13 @@ package com.example.smarttrafficlight.controllers;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 import serialcommunication.PacketListener;
 
 import java.io.PrintWriter;
@@ -34,6 +36,14 @@ public class MainController implements Initializable {
         System.out.println("# STARTTING SERIAL PORT");
         loadSerialPorts();
         System.out.println("# STOPPING SERIAL PORT");
+
+        // Chamar a função disconnectSerial ao clicar no botão de fechar a aplicação
+        Platform.runLater(() -> {
+            Stage primaryStage = (Stage) comboSerialPort.getScene().getWindow();
+            primaryStage.setOnCloseRequest(event -> {
+                disconnectSerial();
+            });
+        });
     }
 
     @FXML
@@ -43,7 +53,6 @@ public class MainController implements Initializable {
         else if(this.serialPort!=null && this.serialPort.isOpen())
             this.disconnectSerial();
     }
-
 
     @FXML
     public void handleToggleLedButton() {
@@ -117,58 +126,31 @@ public class MainController implements Initializable {
         this.serialPort.addDataListener(new SerialPortDataListener() {
             @Override
             public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_RECEIVED; }
-            //.split("\n", 2)[0].replaceAll("\\s+", "");
             @Override
             public void serialEvent(SerialPortEvent event)
             {
                 byte[] newData = event.getReceivedData();
                 String str = new String(newData);
                 processReceivedData(str);
-                //System.out.println("Received data of size:" + newData.length);
-                //System.out.println("String received:"+str);
             }
         });
-
-        /*
-        for(byte data : newData)
-                {
-                    char rx = (char) data;
-                    System.out.print(rx);
-                }
-                for (int i = 0; i < newData.length; ++i)
-                {
-                    char rx = (char)newData[i];
-                    System.out.print(rx);
-                }
-        this.serialPort.addDataListener(new SerialPortDataListener() {
-            @Override
-            public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
-            @Override
-            public void serialEvent(SerialPortEvent event)
-            {
-                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE)
-                    return;
-                byte[] newData = new byte[serialPort.bytesAvailable()];
-                int numRead = serialPort.readBytes(newData, newData.length);
-                System.out.println("Read " + numRead + " bytes.");
-                System.out.println("Leitura:"+newData.toString());
-                System.out.println("Leitura2:"+new String(newData, StandardCharsets.UTF_8));
-            }
-        });*/
 
         btnConnect.setText("Desconectar");
         comboSerialPort.setDisable(true);
         showAlert(Alert.AlertType.CONFIRMATION, "Sucesso!", "Comunição estabelecida com sucesso!");
     }
+
     private void disconnectSerial(){
-        if(this.serialPort.closePort())
-        {
-            btnConnect.setText("Conectar");
-            comboSerialPort.setDisable(false);
-            showAlert(Alert.AlertType.CONFIRMATION, "Sucesso!", "Comunição desconectada com sucesso!");
+        if (this.serialPort != null && this.serialPort.isOpen()) {
+            if(this.serialPort.closePort())
+            {
+                btnConnect.setText("Conectar");
+                comboSerialPort.setDisable(false);
+                showAlert(Alert.AlertType.CONFIRMATION, "Sucesso!", "Comunição desconectada com sucesso!");
+            }
+            else
+                showAlert(Alert.AlertType.ERROR, "Erro!", "# ERROR: ERRO FECHANDO A PORTA SERIAL");
         }
-        else
-            showAlert(Alert.AlertType.ERROR, "Erro!", "# ERROR: ERRO FECHANDO A PORTA SERIAL");
     }
 
 
