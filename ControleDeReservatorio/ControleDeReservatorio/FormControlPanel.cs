@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Media;
 using ControleDeReservatorio.Models;
-
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 
 namespace ControleDeReservatorio
@@ -20,6 +21,9 @@ namespace ControleDeReservatorio
     {
         private FormRegister formRegister;
         private UserModel user;
+        private FilterInfoCollection filterInfoCollection;
+        private VideoCaptureDevice videoCaptureDevice;
+
 
         public FormControlPanel()
         {
@@ -85,6 +89,11 @@ namespace ControleDeReservatorio
         private void Form1_Load(object sender, EventArgs e)
         {
             loadSerialPorts();
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo filterInfo in filterInfoCollection)
+                cbCamera.Items.Add(filterInfo.Name);
+            cbCamera.SelectedIndex = 0;
+            videoCaptureDevice = new VideoCaptureDevice();
         }
 
         private void btnUpdateSerialPorts_Click(object sender, EventArgs e)
@@ -122,9 +131,16 @@ namespace ControleDeReservatorio
             serialPort1.Write(data);
         }
 
+        private void closeWebCam()
+        {
+            if (videoCaptureDevice != null && videoCaptureDevice.IsRunning)
+                videoCaptureDevice.Stop();
+            
+        }
+
         private void closeCOMPort()
         {
-            if (serialPort1.IsOpen)
+            if (serialPort1!=null && serialPort1.IsOpen)
                 serialPort1.Close();
         }
 
@@ -177,7 +193,40 @@ namespace ControleDeReservatorio
         private void btnExit_Click_2(object sender, EventArgs e)
         {
             closeCOMPort();
+            closeWebCam();
             Application.Exit();
+        }
+        
+        private void btnStartVideo_Click(object sender, EventArgs e)
+        {
+            if (videoCaptureDevice.IsRunning)
+            {
+                this.closeWebCam();
+                btnStartVideo.Text = "Iniciar Transmissão";
+                btnStartVideo.ForeColor = Color.Green;
+                pbVideo.Image = null;
+                cbCamera.Enabled = true;
+            }
+            else
+            {
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbCamera.SelectedIndex].MonikerString);
+                videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+                videoCaptureDevice.Start();
+                btnStartVideo.Text = "Parar Transmissão";
+                btnStartVideo.ForeColor = Color.Red;
+                cbCamera.Enabled = false;
+            }
+        }
+        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            pbVideo.Image = (Bitmap)eventArgs.Frame.Clone();
+        }
+
+
+        private void FormControlPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closeCOMPort();
+            closeWebCam();
         }
     }
 }

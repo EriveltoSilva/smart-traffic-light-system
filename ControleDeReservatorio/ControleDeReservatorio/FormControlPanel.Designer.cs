@@ -57,6 +57,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbCamera = new System.Windows.Forms.ComboBox();
+            this.pbVideo = new System.Windows.Forms.PictureBox();
+            this.btnStartVideo = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnl_serial.SuspendLayout();
@@ -67,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -259,7 +266,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(1564, 13);
+            this.btnExit.Location = new System.Drawing.Point(547, 4);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 93);
@@ -382,12 +389,68 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Semaforo-4";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.btnStartVideo);
+            this.panel1.Controls.Add(this.pbVideo);
+            this.panel1.Controls.Add(this.cbCamera);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1019, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(635, 835);
+            this.panel1.TabIndex = 21;
+            // 
+            // cbCamera
+            // 
+            this.cbCamera.FormattingEnabled = true;
+            this.cbCamera.Location = new System.Drawing.Point(68, 622);
+            this.cbCamera.Name = "cbCamera";
+            this.cbCamera.Size = new System.Drawing.Size(509, 28);
+            this.cbCamera.TabIndex = 14;
+            // 
+            // pbVideo
+            // 
+            this.pbVideo.Location = new System.Drawing.Point(42, 104);
+            this.pbVideo.Name = "pbVideo";
+            this.pbVideo.Size = new System.Drawing.Size(547, 447);
+            this.pbVideo.TabIndex = 15;
+            this.pbVideo.TabStop = false;
+            // 
+            // btnStartVideo
+            // 
+            this.btnStartVideo.BackColor = System.Drawing.Color.Transparent;
+            this.btnStartVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartVideo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartVideo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnStartVideo.Location = new System.Drawing.Point(215, 666);
+            this.btnStartVideo.Name = "btnStartVideo";
+            this.btnStartVideo.Size = new System.Drawing.Size(237, 56);
+            this.btnStartVideo.TabIndex = 16;
+            this.btnStartVideo.Text = "Iniciar Transmissão";
+            this.btnStartVideo.UseVisualStyleBackColor = false;
+            this.btnStartVideo.Click += new System.EventHandler(this.btnStartVideo_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(249)))));
+            this.label8.Location = new System.Drawing.Point(63, 572);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 30);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Câmera:";
+            // 
             // FormControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1654, 835);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -396,7 +459,6 @@
             this.Controls.Add(this.pbSemaforo3);
             this.Controls.Add(this.pbSemaforo2);
             this.Controls.Add(this.pbSemaforo1);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -404,6 +466,7 @@
             this.Name = "FormControlPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormControlPanel_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -417,6 +480,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,6 +518,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnStartVideo;
+        private System.Windows.Forms.PictureBox pbVideo;
+        private System.Windows.Forms.ComboBox cbCamera;
     }
 }
 
