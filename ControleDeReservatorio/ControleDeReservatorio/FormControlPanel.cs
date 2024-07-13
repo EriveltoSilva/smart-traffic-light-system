@@ -204,7 +204,7 @@ namespace ControleDeReservatorio
                 this.closeWebCam();
                 btnStartVideo.Text = "Iniciar Transmissão";
                 btnStartVideo.ForeColor = Color.Green;
-                pbVideo.Image = null;
+                pbVideo.Load("../../Resources/AutomaTic.PNG");
                 cbCamera.Enabled = true;
             }
             else
@@ -228,5 +228,7 @@ namespace ControleDeReservatorio
             closeCOMPort();
             closeWebCam();
         }
+
+        
     }
 }

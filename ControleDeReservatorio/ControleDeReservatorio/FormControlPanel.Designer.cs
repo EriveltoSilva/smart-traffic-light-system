@@ -46,6 +46,15 @@
             this.lbl_login_date = new System.Windows.Forms.Label();
             this.lbl_username = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbCamera = new System.Windows.Forms.ComboBox();
+            this.btnStartVideo = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pbVideo = new System.Windows.Forms.PictureBox();
             this.pbSemaforo4 = new System.Windows.Forms.PictureBox();
             this.pbSemaforo3 = new System.Windows.Forms.PictureBox();
             this.pbSemaforo2 = new System.Windows.Forms.PictureBox();
@@ -53,27 +62,18 @@
             this.btnRegiterUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbCamera = new System.Windows.Forms.ComboBox();
-            this.pbVideo = new System.Windows.Forms.PictureBox();
-            this.btnStartVideo = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnl_serial.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -275,76 +275,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click_2);
             // 
-            // pbSemaforo4
-            // 
-            this.pbSemaforo4.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo4.Location = new System.Drawing.Point(758, 438);
-            this.pbSemaforo4.Name = "pbSemaforo4";
-            this.pbSemaforo4.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo4.TabIndex = 17;
-            this.pbSemaforo4.TabStop = false;
-            // 
-            // pbSemaforo3
-            // 
-            this.pbSemaforo3.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo3.Location = new System.Drawing.Point(387, 438);
-            this.pbSemaforo3.Name = "pbSemaforo3";
-            this.pbSemaforo3.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo3.TabIndex = 16;
-            this.pbSemaforo3.TabStop = false;
-            // 
-            // pbSemaforo2
-            // 
-            this.pbSemaforo2.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo2.Location = new System.Drawing.Point(758, 13);
-            this.pbSemaforo2.Name = "pbSemaforo2";
-            this.pbSemaforo2.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo2.TabIndex = 15;
-            this.pbSemaforo2.TabStop = false;
-            // 
-            // pbSemaforo1
-            // 
-            this.pbSemaforo1.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo1.Location = new System.Drawing.Point(387, 13);
-            this.pbSemaforo1.Name = "pbSemaforo1";
-            this.pbSemaforo1.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo1.TabIndex = 14;
-            this.pbSemaforo1.TabStop = false;
-            // 
-            // btnRegiterUser
-            // 
-            this.btnRegiterUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegiterUser.FlatAppearance.BorderSize = 0;
-            this.btnRegiterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegiterUser.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegiterUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(215)))));
-            this.btnRegiterUser.Image = global::ControleDeReservatorio.Properties.Resources.Contact;
-            this.btnRegiterUser.Location = new System.Drawing.Point(0, 218);
-            this.btnRegiterUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRegiterUser.Name = "btnRegiterUser";
-            this.btnRegiterUser.Size = new System.Drawing.Size(327, 74);
-            this.btnRegiterUser.TabIndex = 5;
-            this.btnRegiterUser.Text = "Cadastrar Usuário";
-            this.btnRegiterUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnRegiterUser.UseVisualStyleBackColor = true;
-            this.btnRegiterUser.Visible = false;
-            this.btnRegiterUser.Click += new System.EventHandler(this.btnRegiterUser_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ControleDeReservatorio.Properties.Resources.Usuario;
-            this.pictureBox1.Location = new System.Drawing.Point(103, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(78, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -411,14 +341,6 @@
             this.cbCamera.Size = new System.Drawing.Size(509, 28);
             this.cbCamera.TabIndex = 14;
             // 
-            // pbVideo
-            // 
-            this.pbVideo.Location = new System.Drawing.Point(42, 104);
-            this.pbVideo.Name = "pbVideo";
-            this.pbVideo.Size = new System.Drawing.Size(547, 447);
-            this.pbVideo.TabIndex = 15;
-            this.pbVideo.TabStop = false;
-            // 
             // btnStartVideo
             // 
             this.btnStartVideo.BackColor = System.Drawing.Color.Transparent;
@@ -443,6 +365,86 @@
             this.label8.Size = new System.Drawing.Size(92, 30);
             this.label8.TabIndex = 6;
             this.label8.Text = "Câmera:";
+            // 
+            // pbVideo
+            // 
+            this.pbVideo.Image = global::ControleDeReservatorio.Properties.Resources.AutomaTic;
+            this.pbVideo.Location = new System.Drawing.Point(42, 104);
+            this.pbVideo.Name = "pbVideo";
+            this.pbVideo.Size = new System.Drawing.Size(547, 447);
+            this.pbVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVideo.TabIndex = 15;
+            this.pbVideo.TabStop = false;
+            // 
+            // pbSemaforo4
+            // 
+            this.pbSemaforo4.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo4.Location = new System.Drawing.Point(758, 435);
+            this.pbSemaforo4.Name = "pbSemaforo4";
+            this.pbSemaforo4.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo4.TabIndex = 17;
+            this.pbSemaforo4.TabStop = false;
+            // 
+            // pbSemaforo3
+            // 
+            this.pbSemaforo3.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo3.Location = new System.Drawing.Point(387, 438);
+            this.pbSemaforo3.Name = "pbSemaforo3";
+            this.pbSemaforo3.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo3.TabIndex = 16;
+            this.pbSemaforo3.TabStop = false;
+            // 
+            // pbSemaforo2
+            // 
+            this.pbSemaforo2.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo2.Location = new System.Drawing.Point(758, 13);
+            this.pbSemaforo2.Name = "pbSemaforo2";
+            this.pbSemaforo2.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo2.TabIndex = 15;
+            this.pbSemaforo2.TabStop = false;
+            // 
+            // pbSemaforo1
+            // 
+            this.pbSemaforo1.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo1.Location = new System.Drawing.Point(387, 13);
+            this.pbSemaforo1.Name = "pbSemaforo1";
+            this.pbSemaforo1.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo1.TabIndex = 14;
+            this.pbSemaforo1.TabStop = false;
+            // 
+            // btnRegiterUser
+            // 
+            this.btnRegiterUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegiterUser.FlatAppearance.BorderSize = 0;
+            this.btnRegiterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegiterUser.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegiterUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(215)))));
+            this.btnRegiterUser.Image = global::ControleDeReservatorio.Properties.Resources.Contact;
+            this.btnRegiterUser.Location = new System.Drawing.Point(0, 218);
+            this.btnRegiterUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRegiterUser.Name = "btnRegiterUser";
+            this.btnRegiterUser.Size = new System.Drawing.Size(327, 74);
+            this.btnRegiterUser.TabIndex = 5;
+            this.btnRegiterUser.Text = "Cadastrar Usuário";
+            this.btnRegiterUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnRegiterUser.UseVisualStyleBackColor = true;
+            this.btnRegiterUser.Visible = false;
+            this.btnRegiterUser.Click += new System.EventHandler(this.btnRegiterUser_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ControleDeReservatorio.Properties.Resources.Usuario;
+            this.pictureBox1.Location = new System.Drawing.Point(103, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(78, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // FormControlPanel
             // 
@@ -474,15 +476,15 @@
             this.pnl_serial.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVideo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

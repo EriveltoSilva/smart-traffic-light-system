@@ -63,6 +63,16 @@ namespace ControleDeReservatorio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AutomaTic {
+            get {
+                object obj = ResourceManager.GetObject("AutomaTic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chart_diagram {
             get {
                 object obj = ResourceManager.GetObject("chart-diagram", resourceCulture);
@@ -126,6 +136,16 @@ namespace ControleDeReservatorio.Properties {
         internal static System.Drawing.Bitmap Usuario {
             get {
                 object obj = ResourceManager.GetObject("Usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap video {
+            get {
+                object obj = ResourceManager.GetObject("video", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
