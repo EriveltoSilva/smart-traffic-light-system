@@ -22,14 +22,14 @@
 #define led_vermelho_4 13
 
 
-#define ldr1 A0
-#define ldr2 A1
-#define ldr3 A2
-#define ldr4 A3
+#define ldr1 A1
+#define ldr2 A2
+#define ldr3 A3
+#define ldr4 A4
 
 
-#define pot A15
-#define LED 31
+#define pot A5
+#define LED A0
 
 //Variable
 bool Evento_TA1;
@@ -71,29 +71,22 @@ byte estado_semaforo_2;
 byte estado_semaforo_3;
 byte estado_semaforo_4;
 
-boolean engarrafado1_2 = false, engarrafado3 = false, engarrafado4_5 = false, engarrafado6 = false;
-boolean engarrafado7_8 = false, engarrafado9 = false, engarrafado10_11 = false;
-boolean engarrafado12_13 = false, engarrafado14 = false;
-boolean haCarro1 = false, haCarro4 = false, haCarro7 = false, haCarro11 = false, haCarro13 = false;
+
+boolean haCarro1 = false, haCarro2 = false, haCarro3 = false, haCarro4 = false;
 //**************************************************************************************
 
-
 //Recursos
-int contador1 = 0, contador2 = 0, contador3 = 0, contador4 = 0, contador5 = 0, contador6 = 0, contador7 = 0, contador8 = 0;
-int contador9 = 0, contador10 = 0, contador11 = 0, contador12 = 0, contador13 = 0, contador14 = 0;
+int contadorHa1_1 = 0, contadorHa1_2 = 0, contadorHa1_3 = 0, contadorHa1_4 = 0;
+int contadorHa2_1 = 0, contadorHa2_2 = 0, contadorHa2_3 = 0, contadorHa2_4 = 0;
+int contadorHa3_1 = 0, contadorHa3_2 = 0, contadorHa3_3 = 0, contadorHa3_4 = 0;
+int contadorHa4_1 = 0, contadorHa4_2 = 0, contadorHa4_3 = 0, contadorHa4_4 = 0;
 
-int contador3_01 = 0, contador3_02 = 0, contador6_01 = 0, contador6_02 = 0, contador9_01 = 0, contador9_02 = 0;
-int contador14_01 = 0, contador14_02 = 0;
-
-int contadorHa1 = 0, contadorHa2 = 0, contadorHa4 = 0, contadorHa5 = 0, contadorHa7 = 0, contadorHa8 = 0;
-int contadorHa10 = 0, contadorHa11 = 0, contadorHa12 = 0, contadorHa13 = 0;
 
 unsigned long tempo_ant = 0, tempo_act = 0, tempo_req = 1000;
-
-boolean controleAlerta = false, controleVez = false;
+boolean controleVez = false;
 int nSegundos = 5;
 int marcoLDR = 600, maximo = 0;
-byte contadorEngarrafamento = 0, contadorEngarrafamentoAuxiliar = 0;
+byte contadorEngarrafamento = 0;
 //**********************************
 
 
@@ -443,109 +436,66 @@ void maquina_de_estado(byte estado_maquina) {
       } else if (estado_semaforo_4 == estado_vermelho) {
         modo_vermelho_4();
       }
-
-
-
       break;
-      // case 2:
-      //   if ((estado_semaforo_1 == estado_verde) && (!engarrafado3) && (haCarro1)) {
-      //     modo_verde_1();
-      //   } else if ((estado_semaforo_1 == estado_verde) && (engarrafado3) && (Habilitado_TV1)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if ((estado_semaforo_1 == estado_amarelo) && (!engarrafado3) && (haCarro1)) {
-      //     modo_amarelo_1();
-      //   } else if ((estado_semaforo_1 == estado_amarelo) && (engarrafado3) && (Habilitado_TA1)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if (estado_semaforo_1 == estado_vermelho) {
-      //     modo_vermelho_1();
-      //   } else {
-      //     tempo_ant = millis() - tempo_req;
-      //   }
 
-      //   if ((estado_semaforo_2 == estado_verde) && (!engarrafado6) && (haCarro4)) {
-      //     modo_verde_2();
-      //   } else if ((estado_semaforo_2 == estado_verde) && (engarrafado6) && (Habilitado_TV2)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if ((estado_semaforo_2 == estado_amarelo) && (!engarrafado6) && (haCarro4)) {
-      //     modo_amarelo_2();
-      //   } else if ((estado_semaforo_2 == estado_amarelo) && (engarrafado6) && (Habilitado_TA2)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if (estado_semaforo_2 == estado_vermelho) {
-      //     modo_vermelho_2();
-      //   } else {
-      //     tempo_ant = millis() - tempo_req;
-      //   }
+      case 2:
+        if ((estado_semaforo_1 == estado_verde) && (haCarro1)) {
+          modo_verde_1();
+        } else if ((estado_semaforo_1 == estado_verde) && (!haCarro1) && (Habilitado_TV1)) {
+          tempo_ant = millis() - tempo_req;
+        } else if ((estado_semaforo_1 == estado_amarelo) && (haCarro1)) {
+          modo_amarelo_1();
+        } else if ((estado_semaforo_1 == estado_amarelo) && (!haCarro1) && (Habilitado_TA1)) {
+          tempo_ant = millis() - tempo_req;
+        } else if (estado_semaforo_1 == estado_vermelho) {
+          modo_vermelho_1();
+        } else {
+          tempo_ant = millis() - tempo_req;
+        }
 
-      //   if ((estado_semaforo_3 == estado_verde) && (!engarrafado9) && (haCarro7)) {
-      //     modo_verde_3();
-      //   } else if ((estado_semaforo_3 == estado_verde) && (engarrafado9) && (Habilitado_TV3)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if ((estado_semaforo_3 == estado_amarelo) && (!engarrafado9) && (haCarro7)) {
-      //     modo_amarelo_3();
-      //   } else if ((estado_semaforo_3 == estado_amarelo) && (engarrafado9) && (Habilitado_TA3)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if (estado_semaforo_3 == estado_vermelho) {
-      //     modo_vermelho_3();
-      //   } else {
-      //     tempo_ant = millis() - tempo_req;
-      //   }
+        if ((estado_semaforo_2 == estado_verde) && (haCarro2)) {
+          modo_verde_2();
+        } else if ((estado_semaforo_2 == estado_verde) && (!haCarro2) && (Habilitado_TV2)) {
+          tempo_ant = millis() - tempo_req;
+        } else if ((estado_semaforo_2 == estado_amarelo) && (haCarro2)) {
+          modo_amarelo_2();
+        } else if ((estado_semaforo_2 == estado_amarelo) && (!haCarro2) && (Habilitado_TA2)) {
+          tempo_ant = millis() - tempo_req;
+        } else if (estado_semaforo_2 == estado_vermelho) {
+          modo_vermelho_2();
+        } else {
+          tempo_ant = millis() - tempo_req;
+        }
 
-
-      //   if ((estado_semaforo_4 == estado_verde) && (!engarrafado6) && (haCarro11)) {
-      //     modo_verde_4();
-      //   } else if ((estado_semaforo_4 == estado_verde) && (engarrafado6) && (Habilitado_TV4)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if ((estado_semaforo_4 == estado_amarelo) && (!engarrafado6) && (haCarro11)) {
-      //     modo_amarelo_4();
-      //   } else if ((estado_semaforo_4 == estado_amarelo) && (engarrafado6) && (Habilitado_TA4)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if (estado_semaforo_4 == estado_vermelho) {
-      //     modo_vermelho_4();
-      //   } else {
-      //     tempo_ant = millis() - tempo_req;
-      //   }
-
-      //   if ((estado_semaforo_5 == estado_verde) && (!engarrafado14) && (haCarro13)) {
-      //     modo_verde_5();
-      //   } else if ((estado_semaforo_5 == estado_verde) && (engarrafado14) && (Habilitado_TV5)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if ((estado_semaforo_5 == estado_amarelo) && !engarrafado14 && haCarro13) {
-      //     modo_amarelo_5();
-      //   } else if ((estado_semaforo_5 == estado_amarelo) && (engarrafado14) && (Habilitado_TA5)) {
-      //     tempo_ant = millis() - tempo_req;
-      //   } else if (estado_semaforo_5 == estado_vermelho) {
-      //     modo_vermelho_5();
-      //   } else {
-      //     tempo_ant = millis() - tempo_req;
-      //   }
-
-      //   if ((estado_semaforo_6 == estado_verde) && (!engarrafado3) && (haCarro7)) {
-      //     modo_verde_6();
-      //   } else if ((estado_semaforo_6 == estado_verde) && (engarrafado3) && (Habilitado_TV6)) {
-      //   } else if ((estado_semaforo_6 == estado_amarelo) && (!engarrafado3) && (haCarro7)) {
-      //     modo_amarelo_6();
-      //   } else if ((estado_semaforo_6 == estado_amarelo) && (engarrafado3) && (Habilitado_TA6)) {
-
-      //   } else if (estado_semaforo_6 == estado_vermelho) {
-      //     modo_vermelho_6();
-      //   }
-
-      //   if ((estado_semaforo_7 == estado_verde) && (!engarrafado6) && (haCarro13)) {
-      //     modo_verde_7();
-      //   } else if ((estado_semaforo_7 == estado_verde) && (engarrafado6) && (Habilitado_TV7)) {
-
-      //   } else if ((estado_semaforo_7 == estado_amarelo) && (!engarrafado6) && (haCarro13)) {
-      //     modo_amarelo_7();
-      //   } else if ((estado_semaforo_7 == estado_amarelo) && (engarrafado6) && (Habilitado_TA7)) {
-
-      //   } else if (estado_semaforo_7 == estado_vermelho) {
-      //     modo_vermelho_7();
-      //   }
+        if ((estado_semaforo_3 == estado_verde) && (haCarro3)) {
+          modo_verde_3();
+        } else if ((estado_semaforo_3 == estado_verde) && (!haCarro3) && (Habilitado_TV3)) {
+          tempo_ant = millis() - tempo_req;
+        } else if ((estado_semaforo_3 == estado_amarelo) && (haCarro3)) {
+          modo_amarelo_3();
+        } else if ((estado_semaforo_3 == estado_amarelo) && (!haCarro3) && (Habilitado_TA3)) {
+          tempo_ant = millis() - tempo_req;
+        } else if (estado_semaforo_3 == estado_vermelho) {
+          modo_vermelho_3();
+        } else {
+          tempo_ant = millis() - tempo_req;
+        }
 
 
-
-
-      //   break;
+        if ((estado_semaforo_4 == estado_verde) && (haCarro4)) {
+          modo_verde_4();
+        } else if ((estado_semaforo_4 == estado_verde) && (!haCarro4) && (Habilitado_TV4)) {
+          tempo_ant = millis() - tempo_req;
+        } else if ((estado_semaforo_4 == estado_amarelo) && (haCarro4)) {
+          modo_amarelo_4();
+        } else if ((estado_semaforo_4 == estado_amarelo) && (!haCarro4) && (Habilitado_TA4)) {
+          tempo_ant = millis() - tempo_req;
+        } else if (estado_semaforo_4 == estado_vermelho) {
+          modo_vermelho_4();
+        } else {
+          tempo_ant = millis() - tempo_req;
+        }
+        break;
   }
 
 
@@ -609,50 +559,87 @@ void loop() {
     digitalWrite(LED, LOW);
   }
 
-  // if (LDR1 > marcoLDR) {
-  //   contadorHa1++;
-  //   if (contadorHa1 > nSegundos) {
-  //     contadorHa2 = 0;
-  //     haCarro1 = true;
-  //   }
-  // } else {
-  //   contadorHa2++;
-  //   if (contadorHa2 > nSegundos) {
-  //     contadorHa1 = 0;
-  //     haCarro1 = false;
-  //   }
-  // }
+  if (LDR1 > marcoLDR) {
+    contadorHa1_1++;
+    if (contadorHa1_1 > nSegundos) {
+      contadorHa1_2 = 0;
+      haCarro1 = true;
+    }
+  } else {
+    contadorHa1_2++;
+    if (contadorHa1_2 > nSegundos) {
+      contadorHa1_1 = 0;
+      haCarro1 = false;
+    }
+  }
+  
+  if (LDR2 > marcoLDR) {
+    contadorHa2_1++;
+    if (contadorHa2_1 > nSegundos) {
+      contadorHa2_2 = 0;
+      haCarro2 = true;
+    }
+  } else {
+    contadorHa2_2++;
+    if (contadorHa2_2 > nSegundos) {
+      contadorHa2_1 = 0;
+      haCarro2 = false;
+    }
+  }
 
+  if (LDR3 > marcoLDR) {
+    contadorHa3_1++;
+    if (contadorHa3_1 > nSegundos) {
+      contadorHa3_2 = 0;
+      haCarro3 = true;
+    }
+  } else {
+    contadorHa3_2++;
+    if (contadorHa3_2 > nSegundos) {
+      contadorHa3_1 = 0;
+      haCarro3 = false;
+    }
+  }
+
+  if (LDR4 > marcoLDR) {
+    contadorHa4_1++;
+    if (contadorHa4_1 > nSegundos) {
+      contadorHa4_2 = 0;
+      haCarro4 = true;
+    }
+  } else {
+    contadorHa4_2++;
+    if (contadorHa4_2 > nSegundos) {
+      contadorHa4_1 = 0;
+      haCarro4 = false;
+    }
+  }
 
   //------------------Contando engarrafamento----------------------
-  // if (engarrafado1_2) contadorEngarrafamento++;
-  // if (engarrafado3) {
-  //   contadorEngarrafamento++;
-  //   contadorEngarrafamentoAuxiliar++;
-  // }
+  contadorEngarrafamento=0;
+  if(haCarro1)contadorEngarrafamento++;
+  if(haCarro2)contadorEngarrafamento++;
+  if(haCarro3)contadorEngarrafamento++;
+  if(haCarro4)contadorEngarrafamento++;
+  if (contadorEngarrafamento == 4) {
+    tempo_act = millis();
+    if (tempo_act - tempo_ant >= tempo_req) {
+      controleVez = !controleVez;
+      tempo_ant = millis();
+      if (controleVez) {
+        modo_alerta();
+      } else {
+        modo_apagados();
+      }
+    }
+  } else if ((!haCarro1) && (!haCarro2) && (!haCarro3) && (!haCarro4))
+    maquina_de_estado(1);
+  else
+    maquina_de_estado(2);
 
-  // if (contadorEngarrafamentoAuxiliar == 4) {
-  //   tempo_act = millis();
-  //   if (tempo_act - tempo_ant >= tempo_req) {
-  //     controleVez = !controleVez;
-  //     tempo_ant = millis();
-  //     if (controleVez) {
-  //       modo_alerta();
-  //     } else {
-  //       modo_apagados();
-  //     }
-  //   }
-  // } else if ((!haCarro1) && (!haCarro4) && (!haCarro7) && (!haCarro11) && (!haCarro13))
-  //   maquina_de_estado(1);
-  // else
-  //   maquina_de_estado(2);
-
-  maquina_de_estado(1);
-
-
-  // maximo = 0;
   enviarDados();
+  
+  maximo = 0;
+  contadorEngarrafamento = 0;
   delay(1000);
-  // contadorEngarrafamento = 0;
-  // contadorEngarrafamentoAuxiliar = 0;
 }
