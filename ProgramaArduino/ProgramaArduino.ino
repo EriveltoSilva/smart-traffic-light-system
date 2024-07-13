@@ -89,6 +89,8 @@ int marcoLDR = 600, maximo = 0;
 byte contadorEngarrafamento = 0;
 //**********************************
 
+// N- Normal, E-Emergencia
+char modo = 'N';
 
 void modo_verde_1() {
   digitalWrite(led_verde_1, HIGH);
@@ -170,20 +172,27 @@ char getEstadoSemaforo(int num) {
     if (digitalRead(led_verde_1)) return 'g';
     else if (digitalRead(led_amarelo_1)) return 'y';
     else if (digitalRead(led_vermelho_1)) return 'r';
-  } else if (num == 2) {
+    else return 'd';
+  } 
+  else if (num == 2) {
     if (digitalRead(led_verde_2)) return 'g';
     else if (digitalRead(led_amarelo_2)) return 'y';
     else if (digitalRead(led_vermelho_2)) return 'r';
-  } else if (num == 3) {
+    else return 'd';
+  } 
+  else if (num == 3) {
     if (digitalRead(led_verde_3)) return 'g';
     else if (digitalRead(led_amarelo_3)) return 'y';
     else if (digitalRead(led_vermelho_3)) return 'r';
-  } else if (num == 4) {
+    else return 'd';
+  } 
+  else if (num == 4) {
     if (digitalRead(led_verde_4)) return 'g';
     else if (digitalRead(led_amarelo_4)) return 'y';
     else if (digitalRead(led_vermelho_4)) return 'r';
+    else return 'd';
   }
-  return ' ';
+  return 'd';
 }
 
 String lerEstados() {
@@ -196,7 +205,7 @@ String lerEstados() {
 }
 
 void enviarDados() {
-  Serial.println("D*"+lerEstados());
+  Serial.println("D*" + lerEstados()+String(modo)+"*");
 }
 
 
@@ -438,64 +447,64 @@ void maquina_de_estado(byte estado_maquina) {
       }
       break;
 
-      case 2:
-        if ((estado_semaforo_1 == estado_verde) && (haCarro1)) {
-          modo_verde_1();
-        } else if ((estado_semaforo_1 == estado_verde) && (!haCarro1) && (Habilitado_TV1)) {
-          tempo_ant = millis() - tempo_req;
-        } else if ((estado_semaforo_1 == estado_amarelo) && (haCarro1)) {
-          modo_amarelo_1();
-        } else if ((estado_semaforo_1 == estado_amarelo) && (!haCarro1) && (Habilitado_TA1)) {
-          tempo_ant = millis() - tempo_req;
-        } else if (estado_semaforo_1 == estado_vermelho) {
-          modo_vermelho_1();
-        } else {
-          tempo_ant = millis() - tempo_req;
-        }
+    case 2:
+      if ((estado_semaforo_1 == estado_verde) && (haCarro1)) {
+        modo_verde_1();
+      } else if ((estado_semaforo_1 == estado_verde) && (!haCarro1) && (Habilitado_TV1)) {
+        tempo_ant = millis() - tempo_req;
+      } else if ((estado_semaforo_1 == estado_amarelo) && (haCarro1)) {
+        modo_amarelo_1();
+      } else if ((estado_semaforo_1 == estado_amarelo) && (!haCarro1) && (Habilitado_TA1)) {
+        tempo_ant = millis() - tempo_req;
+      } else if (estado_semaforo_1 == estado_vermelho) {
+        modo_vermelho_1();
+      } else {
+        tempo_ant = millis() - tempo_req;
+      }
 
-        if ((estado_semaforo_2 == estado_verde) && (haCarro2)) {
-          modo_verde_2();
-        } else if ((estado_semaforo_2 == estado_verde) && (!haCarro2) && (Habilitado_TV2)) {
-          tempo_ant = millis() - tempo_req;
-        } else if ((estado_semaforo_2 == estado_amarelo) && (haCarro2)) {
-          modo_amarelo_2();
-        } else if ((estado_semaforo_2 == estado_amarelo) && (!haCarro2) && (Habilitado_TA2)) {
-          tempo_ant = millis() - tempo_req;
-        } else if (estado_semaforo_2 == estado_vermelho) {
-          modo_vermelho_2();
-        } else {
-          tempo_ant = millis() - tempo_req;
-        }
+      if ((estado_semaforo_2 == estado_verde) && (haCarro2)) {
+        modo_verde_2();
+      } else if ((estado_semaforo_2 == estado_verde) && (!haCarro2) && (Habilitado_TV2)) {
+        tempo_ant = millis() - tempo_req;
+      } else if ((estado_semaforo_2 == estado_amarelo) && (haCarro2)) {
+        modo_amarelo_2();
+      } else if ((estado_semaforo_2 == estado_amarelo) && (!haCarro2) && (Habilitado_TA2)) {
+        tempo_ant = millis() - tempo_req;
+      } else if (estado_semaforo_2 == estado_vermelho) {
+        modo_vermelho_2();
+      } else {
+        tempo_ant = millis() - tempo_req;
+      }
 
-        if ((estado_semaforo_3 == estado_verde) && (haCarro3)) {
-          modo_verde_3();
-        } else if ((estado_semaforo_3 == estado_verde) && (!haCarro3) && (Habilitado_TV3)) {
-          tempo_ant = millis() - tempo_req;
-        } else if ((estado_semaforo_3 == estado_amarelo) && (haCarro3)) {
-          modo_amarelo_3();
-        } else if ((estado_semaforo_3 == estado_amarelo) && (!haCarro3) && (Habilitado_TA3)) {
-          tempo_ant = millis() - tempo_req;
-        } else if (estado_semaforo_3 == estado_vermelho) {
-          modo_vermelho_3();
-        } else {
-          tempo_ant = millis() - tempo_req;
-        }
+      if ((estado_semaforo_3 == estado_verde) && (haCarro3)) {
+        modo_verde_3();
+      } else if ((estado_semaforo_3 == estado_verde) && (!haCarro3) && (Habilitado_TV3)) {
+        tempo_ant = millis() - tempo_req;
+      } else if ((estado_semaforo_3 == estado_amarelo) && (haCarro3)) {
+        modo_amarelo_3();
+      } else if ((estado_semaforo_3 == estado_amarelo) && (!haCarro3) && (Habilitado_TA3)) {
+        tempo_ant = millis() - tempo_req;
+      } else if (estado_semaforo_3 == estado_vermelho) {
+        modo_vermelho_3();
+      } else {
+        tempo_ant = millis() - tempo_req;
+      }
 
 
-        if ((estado_semaforo_4 == estado_verde) && (haCarro4)) {
-          modo_verde_4();
-        } else if ((estado_semaforo_4 == estado_verde) && (!haCarro4) && (Habilitado_TV4)) {
-          tempo_ant = millis() - tempo_req;
-        } else if ((estado_semaforo_4 == estado_amarelo) && (haCarro4)) {
-          modo_amarelo_4();
-        } else if ((estado_semaforo_4 == estado_amarelo) && (!haCarro4) && (Habilitado_TA4)) {
-          tempo_ant = millis() - tempo_req;
-        } else if (estado_semaforo_4 == estado_vermelho) {
-          modo_vermelho_4();
-        } else {
-          tempo_ant = millis() - tempo_req;
-        }
-        break;
+      if ((estado_semaforo_4 == estado_verde) && (haCarro4)) {
+        modo_verde_4();
+      } else if ((estado_semaforo_4 == estado_verde) && (!haCarro4) && (Habilitado_TV4)) {
+        tempo_ant = millis() - tempo_req;
+      } else if ((estado_semaforo_4 == estado_amarelo) && (haCarro4)) {
+        modo_amarelo_4();
+      } else if ((estado_semaforo_4 == estado_amarelo) && (!haCarro4) && (Habilitado_TA4)) {
+        tempo_ant = millis() - tempo_req;
+      } else if (estado_semaforo_4 == estado_vermelho) {
+        modo_vermelho_4();
+      } else {
+        tempo_ant = millis() - tempo_req;
+      }
+      break;
   }
 
 
@@ -515,6 +524,12 @@ void maquina_de_estado(byte estado_maquina) {
   Evento_TR4 = false;
 }
 
+void modo_emergencia() {
+  modo_vermelho_1();
+  modo_vermelho_2();
+  modo_vermelho_3();
+  modo_vermelho_4();
+}
 
 void modo_alerta() {
   modo_amarelo_1();
@@ -541,106 +556,125 @@ void modo_apagados() {
 }
 
 void loop() {
+  receberDados();
 
-  int LDR1 = analogRead(ldr1);
-  int LDR2 = analogRead(ldr2);
-  int LDR3 = analogRead(ldr3);
-  int LDR4 = analogRead(ldr4);
-  int POT = analogRead(pot);
+  if (modo == 'N') {
+    int LDR1 = analogRead(ldr1);
+    int LDR2 = analogRead(ldr2);
+    int LDR3 = analogRead(ldr3);
+    int LDR4 = analogRead(ldr4);
+    int POT = analogRead(pot);
 
-  marcoLDR = map(POT, 0, 1023, 100, 1000);
-  if (LDR1 > maximo) { maximo = LDR1; }
-  if (LDR2 > maximo) { maximo = LDR2; }
-  if (LDR3 > maximo) { maximo = LDR3; }
-  if (LDR4 > maximo) { maximo = LDR4; }
-  if (marcoLDR > maximo) {
-    digitalWrite(LED, HIGH);
+    marcoLDR = map(POT, 0, 1023, 100, 1000);
+    if (LDR1 > maximo) { maximo = LDR1; }
+    if (LDR2 > maximo) { maximo = LDR2; }
+    if (LDR3 > maximo) { maximo = LDR3; }
+    if (LDR4 > maximo) { maximo = LDR4; }
+    if (marcoLDR > maximo) {
+      digitalWrite(LED, HIGH);
+    } else {
+      digitalWrite(LED, LOW);
+    }
+
+    if (LDR1 > marcoLDR) {
+      contadorHa1_1++;
+      if (contadorHa1_1 > nSegundos) {
+        contadorHa1_2 = 0;
+        haCarro1 = true;
+      }
+    } else {
+      contadorHa1_2++;
+      if (contadorHa1_2 > nSegundos) {
+        contadorHa1_1 = 0;
+        haCarro1 = false;
+      }
+    }
+
+    if (LDR2 > marcoLDR) {
+      contadorHa2_1++;
+      if (contadorHa2_1 > nSegundos) {
+        contadorHa2_2 = 0;
+        haCarro2 = true;
+      }
+    } else {
+      contadorHa2_2++;
+      if (contadorHa2_2 > nSegundos) {
+        contadorHa2_1 = 0;
+        haCarro2 = false;
+      }
+    }
+
+    if (LDR3 > marcoLDR) {
+      contadorHa3_1++;
+      if (contadorHa3_1 > nSegundos) {
+        contadorHa3_2 = 0;
+        haCarro3 = true;
+      }
+    } else {
+      contadorHa3_2++;
+      if (contadorHa3_2 > nSegundos) {
+        contadorHa3_1 = 0;
+        haCarro3 = false;
+      }
+    }
+
+    if (LDR4 > marcoLDR) {
+      contadorHa4_1++;
+      if (contadorHa4_1 > nSegundos) {
+        contadorHa4_2 = 0;
+        haCarro4 = true;
+      }
+    } else {
+      contadorHa4_2++;
+      if (contadorHa4_2 > nSegundos) {
+        contadorHa4_1 = 0;
+        haCarro4 = false;
+      }
+    }
+
+    //------------------Contando engarrafamento----------------------
+    contadorEngarrafamento=0;
+    if(haCarro1)contadorEngarrafamento++;
+    if(haCarro2)contadorEngarrafamento++;
+    if(haCarro3)contadorEngarrafamento++;
+    if(haCarro4)contadorEngarrafamento++;
+    if (contadorEngarrafamento == 4) {
+      tempo_act = millis();
+      if (tempo_act - tempo_ant >= tempo_req) {
+        controleVez = !controleVez;
+        tempo_ant = millis();
+        if (controleVez) {
+          modo_alerta();
+        } else {
+          modo_apagados();
+        }
+      }
+    } else if ((!haCarro1) && (!haCarro2) && (!haCarro3) && (!haCarro4))
+      maquina_de_estado(1);
+    else
+      maquina_de_estado(2);
+
+    // maquina_de_estado(1);
   } else {
-    digitalWrite(LED, LOW);
+    modo_emergencia();
   }
 
-  if (LDR1 > marcoLDR) {
-    contadorHa1_1++;
-    if (contadorHa1_1 > nSegundos) {
-      contadorHa1_2 = 0;
-      haCarro1 = true;
-    }
-  } else {
-    contadorHa1_2++;
-    if (contadorHa1_2 > nSegundos) {
-      contadorHa1_1 = 0;
-      haCarro1 = false;
-    }
-  }
-  
-  if (LDR2 > marcoLDR) {
-    contadorHa2_1++;
-    if (contadorHa2_1 > nSegundos) {
-      contadorHa2_2 = 0;
-      haCarro2 = true;
-    }
-  } else {
-    contadorHa2_2++;
-    if (contadorHa2_2 > nSegundos) {
-      contadorHa2_1 = 0;
-      haCarro2 = false;
-    }
-  }
-
-  if (LDR3 > marcoLDR) {
-    contadorHa3_1++;
-    if (contadorHa3_1 > nSegundos) {
-      contadorHa3_2 = 0;
-      haCarro3 = true;
-    }
-  } else {
-    contadorHa3_2++;
-    if (contadorHa3_2 > nSegundos) {
-      contadorHa3_1 = 0;
-      haCarro3 = false;
-    }
-  }
-
-  if (LDR4 > marcoLDR) {
-    contadorHa4_1++;
-    if (contadorHa4_1 > nSegundos) {
-      contadorHa4_2 = 0;
-      haCarro4 = true;
-    }
-  } else {
-    contadorHa4_2++;
-    if (contadorHa4_2 > nSegundos) {
-      contadorHa4_1 = 0;
-      haCarro4 = false;
-    }
-  }
-
-  //------------------Contando engarrafamento----------------------
-  // contadorEngarrafamento=0;
-  // if(haCarro1)contadorEngarrafamento++;
-  // if(haCarro2)contadorEngarrafamento++;
-  // if(haCarro3)contadorEngarrafamento++;
-  // if(haCarro4)contadorEngarrafamento++;
-  // if (contadorEngarrafamento == 4) {
-  //   tempo_act = millis();
-  //   if (tempo_act - tempo_ant >= tempo_req) {
-  //     controleVez = !controleVez;
-  //     tempo_ant = millis();
-  //     if (controleVez) {
-  //       modo_alerta();
-  //     } else {
-  //       modo_apagados();
-  //     }
-  //   }
-  // } else if ((!haCarro1) && (!haCarro2) && (!haCarro3) && (!haCarro4))
-  //   maquina_de_estado(1);
-  // else
-  //   maquina_de_estado(2);
-
-  maquina_de_estado(1);
   enviarDados();
-  
   maximo = 0;
   contadorEngarrafamento = 0;
   delay(1000);
+}
+
+
+void receberDados() {
+  if (Serial.available()){
+    while(Serial.available())
+    {
+      char rx =(char) Serial.read();
+      if(rx=='N')
+        modo = 'N';
+      else if(rx=='E')
+        modo = 'E';
+    }
+  }
 }

@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OIP.ico" />
+    <None Include="Resources\desligado.png" />
     <Content Include="semaforo.ico" />
     <None Include="Resources\AutomaTic.PNG" />
     <None Include="Resources\video.png" />

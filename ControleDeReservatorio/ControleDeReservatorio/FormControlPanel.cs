@@ -23,6 +23,7 @@ namespace ControleDeReservatorio
         private UserModel user;
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
+        private char modoProjecto='N';
 
 
         public FormControlPanel()
@@ -148,19 +149,32 @@ namespace ControleDeReservatorio
         {
             if (value == "r") value = "red";
             else if (value == "g") value = "green";
-            else value = "yellow";
+            else if (value == "y") value = "yellow";
+            else value = "desligado";
             image.Load("../../Resources/"+value+".png");
         }
         private void receiveDataFromArduino(object sender, EventArgs e)
         {
-            // 0-D, 1-semaforo1, 2-semaforo2, 3-semaforo3, 4-semaforo4
+            // 0-D, 1-semaforo1, 2-semaforo2, 3-semaforo3, 4-semaforo4, 5-modo(E-emergencia, N-normal)
             String[] dados = serialPort1.ReadLine().Split('*');
-            if (dados.Length == 6 && dados[0] == "D")
+            if (dados.Length == 7 && dados[0] == "D")
             {
                 setImage(dados[1], pbSemaforo1);
                 setImage(dados[2], pbSemaforo2);
                 setImage(dados[3], pbSemaforo3);
                 setImage(dados[4], pbSemaforo4);
+                if(dados[5] == "N")
+                {
+                    modoProjecto = 'N';
+                    btnEmergencia1.Text = "Activar Emergência";
+                    btnEmergencia1.ForeColor = Color.Green;
+                }
+                else
+                {
+                    modoProjecto = 'E';
+                    btnEmergencia1.Text = "Desactivar Emergência";
+                    btnEmergencia1.ForeColor = Color.Red;
+                }
             }
         }
 
@@ -229,6 +243,10 @@ namespace ControleDeReservatorio
             closeWebCam();
         }
 
-        
+        private void btnEmergencia_Click(object sender, EventArgs e)
+        {
+            sendDataToArduino((modoProjecto == 'N')?"E":"N");
+        }
+
     }
 }
