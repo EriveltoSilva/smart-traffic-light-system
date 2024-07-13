@@ -196,7 +196,7 @@ String lerEstados() {
 }
 
 void enviarDados() {
-  Serial.println(lerEstados());
+  Serial.println("D*"+lerEstados());
 }
 
 
@@ -616,27 +616,28 @@ void loop() {
   }
 
   //------------------Contando engarrafamento----------------------
-  contadorEngarrafamento=0;
-  if(haCarro1)contadorEngarrafamento++;
-  if(haCarro2)contadorEngarrafamento++;
-  if(haCarro3)contadorEngarrafamento++;
-  if(haCarro4)contadorEngarrafamento++;
-  if (contadorEngarrafamento == 4) {
-    tempo_act = millis();
-    if (tempo_act - tempo_ant >= tempo_req) {
-      controleVez = !controleVez;
-      tempo_ant = millis();
-      if (controleVez) {
-        modo_alerta();
-      } else {
-        modo_apagados();
-      }
-    }
-  } else if ((!haCarro1) && (!haCarro2) && (!haCarro3) && (!haCarro4))
-    maquina_de_estado(1);
-  else
-    maquina_de_estado(2);
+  // contadorEngarrafamento=0;
+  // if(haCarro1)contadorEngarrafamento++;
+  // if(haCarro2)contadorEngarrafamento++;
+  // if(haCarro3)contadorEngarrafamento++;
+  // if(haCarro4)contadorEngarrafamento++;
+  // if (contadorEngarrafamento == 4) {
+  //   tempo_act = millis();
+  //   if (tempo_act - tempo_ant >= tempo_req) {
+  //     controleVez = !controleVez;
+  //     tempo_ant = millis();
+  //     if (controleVez) {
+  //       modo_alerta();
+  //     } else {
+  //       modo_apagados();
+  //     }
+  //   }
+  // } else if ((!haCarro1) && (!haCarro2) && (!haCarro3) && (!haCarro4))
+  //   maquina_de_estado(1);
+  // else
+  //   maquina_de_estado(2);
 
+  maquina_de_estado(1);
   enviarDados();
   
   maximo = 0;
