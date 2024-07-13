@@ -46,23 +46,27 @@
             this.lbl_login_date = new System.Windows.Forms.Label();
             this.lbl_username = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.pbSemaforo4 = new System.Windows.Forms.PictureBox();
+            this.pbSemaforo3 = new System.Windows.Forms.PictureBox();
+            this.pbSemaforo2 = new System.Windows.Forms.PictureBox();
             this.pbSemaforo1 = new System.Windows.Forms.PictureBox();
             this.btnRegiterUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pbSemaforo2 = new System.Windows.Forms.PictureBox();
-            this.pbSemaforo3 = new System.Windows.Forms.PictureBox();
-            this.pbSemaforo4 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnl_serial.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -264,10 +268,40 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click_2);
             // 
+            // pbSemaforo4
+            // 
+            this.pbSemaforo4.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo4.Location = new System.Drawing.Point(758, 438);
+            this.pbSemaforo4.Name = "pbSemaforo4";
+            this.pbSemaforo4.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo4.TabIndex = 17;
+            this.pbSemaforo4.TabStop = false;
+            // 
+            // pbSemaforo3
+            // 
+            this.pbSemaforo3.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo3.Location = new System.Drawing.Point(387, 438);
+            this.pbSemaforo3.Name = "pbSemaforo3";
+            this.pbSemaforo3.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo3.TabIndex = 16;
+            this.pbSemaforo3.TabStop = false;
+            // 
+            // pbSemaforo2
+            // 
+            this.pbSemaforo2.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo2.Location = new System.Drawing.Point(758, 13);
+            this.pbSemaforo2.Name = "pbSemaforo2";
+            this.pbSemaforo2.Size = new System.Drawing.Size(240, 358);
+            this.pbSemaforo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSemaforo2.TabIndex = 15;
+            this.pbSemaforo2.TabStop = false;
+            // 
             // pbSemaforo1
             // 
             this.pbSemaforo1.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo1.Location = new System.Drawing.Point(387, 41);
+            this.pbSemaforo1.Location = new System.Drawing.Point(387, 13);
             this.pbSemaforo1.Name = "pbSemaforo1";
             this.pbSemaforo1.Size = new System.Drawing.Size(240, 358);
             this.pbSemaforo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -304,35 +338,49 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // pbSemaforo2
+            // label4
             // 
-            this.pbSemaforo2.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo2.Location = new System.Drawing.Point(758, 41);
-            this.pbSemaforo2.Name = "pbSemaforo2";
-            this.pbSemaforo2.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo2.TabIndex = 15;
-            this.pbSemaforo2.TabStop = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(249)))));
+            this.label4.Location = new System.Drawing.Point(445, 374);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 30);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Semaforo-1";
             // 
-            // pbSemaforo3
+            // label5
             // 
-            this.pbSemaforo3.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo3.Location = new System.Drawing.Point(387, 438);
-            this.pbSemaforo3.Name = "pbSemaforo3";
-            this.pbSemaforo3.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo3.TabIndex = 16;
-            this.pbSemaforo3.TabStop = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(249)))));
+            this.label5.Location = new System.Drawing.Point(808, 374);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 30);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Semaforo-2";
             // 
-            // pbSemaforo4
+            // label6
             // 
-            this.pbSemaforo4.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
-            this.pbSemaforo4.Location = new System.Drawing.Point(758, 438);
-            this.pbSemaforo4.Name = "pbSemaforo4";
-            this.pbSemaforo4.Size = new System.Drawing.Size(240, 358);
-            this.pbSemaforo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSemaforo4.TabIndex = 17;
-            this.pbSemaforo4.TabStop = false;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(249)))));
+            this.label6.Location = new System.Drawing.Point(445, 796);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 30);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Semaforo-3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(249)))));
+            this.label7.Location = new System.Drawing.Point(822, 796);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 30);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Semaforo-4";
             // 
             // FormControlPanel
             // 
@@ -340,6 +388,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1654, 835);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pbSemaforo4);
             this.Controls.Add(this.pbSemaforo3);
             this.Controls.Add(this.pbSemaforo2);
@@ -359,13 +411,14 @@
             this.pnl_serial.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSemaforo4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -395,6 +448,10 @@
         private System.Windows.Forms.PictureBox pbSemaforo2;
         private System.Windows.Forms.PictureBox pbSemaforo3;
         private System.Windows.Forms.PictureBox pbSemaforo4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

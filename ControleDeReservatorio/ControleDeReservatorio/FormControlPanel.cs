@@ -128,14 +128,23 @@ namespace ControleDeReservatorio
                 serialPort1.Close();
         }
 
-
+        private void setImage(String value, PictureBox image)
+        {
+            if (value == "r") value = "red";
+            else if (value == "g") value = "green";
+            else value = "yellow";
+            image.Load("../../Resources/"+value+".png");
+        }
         private void receiveDataFromArduino(object sender, EventArgs e)
         {
-            // 0-R, 1-nivelReservatorio1, 2- leituraReservatorio1, 3-nivelReservatorio2, 4- leituraReservatorio2,
+            // 0-D, 1-semaforo1, 2-semaforo2, 3-semaforo3, 4-semaforo4
             String[] dados = serialPort1.ReadLine().Split('*');
-            if (dados.Length == 4 && dados[0] == "D")
+            if (dados.Length == 6 && dados[0] == "D")
             {
-
+                setImage(dados[1], pbSemaforo1);
+                setImage(dados[2], pbSemaforo2);
+                setImage(dados[3], pbSemaforo3);
+                setImage(dados[4], pbSemaforo4);
             }
         }
 
