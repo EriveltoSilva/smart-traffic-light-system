@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>OIP.ico</ApplicationIcon>
+    <ApplicationIcon>semaforo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OIP.ico" />
+    <Content Include="semaforo.ico" />
     <None Include="Resources\AutomaTic.PNG" />
     <None Include="Resources\video.png" />
     <None Include="Resources\yellow.png" />
