@@ -131,7 +131,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::ControleDeReservatorio.Properties.Resources.login;
+            this.pictureBox2.Image = global::MonitoramentoDeSemaforo.Properties.Resources.login;
             this.pictureBox2.Location = new System.Drawing.Point(183, 217);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(461, 384);
@@ -167,7 +167,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ControleDeReservatorio.Properties.Resources.Usuario;
+            this.pictureBox1.Image = global::MonitoramentoDeSemaforo.Properties.Resources.Usuario;
             this.pictureBox1.Location = new System.Drawing.Point(1119, 119);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(131, 94);

@@ -119,7 +119,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ControleDeReservatorio.Properties.Resources.Usuario;
+            this.pictureBox1.Image = global::MonitoramentoDeSemaforo.Properties.Resources.Usuario;
             this.pictureBox1.Location = new System.Drawing.Point(640, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(131, 94);

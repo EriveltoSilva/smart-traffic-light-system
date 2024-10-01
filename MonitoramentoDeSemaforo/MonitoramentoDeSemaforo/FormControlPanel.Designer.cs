@@ -386,7 +386,7 @@
             // 
             // pbVideo
             // 
-            this.pbVideo.Image = global::ControleDeReservatorio.Properties.Resources.AutomaTic;
+            this.pbVideo.Image = global::MonitoramentoDeSemaforo.Properties.Resources.AutomaTic;
             this.pbVideo.Location = new System.Drawing.Point(42, 104);
             this.pbVideo.Name = "pbVideo";
             this.pbVideo.Size = new System.Drawing.Size(547, 586);
@@ -396,7 +396,7 @@
             // 
             // pbSemaforo4
             // 
-            this.pbSemaforo4.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo4.Image = global::MonitoramentoDeSemaforo.Properties.Resources.yellow;
             this.pbSemaforo4.Location = new System.Drawing.Point(410, 457);
             this.pbSemaforo4.Name = "pbSemaforo4";
             this.pbSemaforo4.Size = new System.Drawing.Size(240, 358);
@@ -406,7 +406,7 @@
             // 
             // pbSemaforo3
             // 
-            this.pbSemaforo3.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo3.Image = global::MonitoramentoDeSemaforo.Properties.Resources.yellow;
             this.pbSemaforo3.Location = new System.Drawing.Point(49, 457);
             this.pbSemaforo3.Name = "pbSemaforo3";
             this.pbSemaforo3.Size = new System.Drawing.Size(240, 358);
@@ -416,7 +416,7 @@
             // 
             // pbSemaforo2
             // 
-            this.pbSemaforo2.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo2.Image = global::MonitoramentoDeSemaforo.Properties.Resources.yellow;
             this.pbSemaforo2.Location = new System.Drawing.Point(410, 32);
             this.pbSemaforo2.Name = "pbSemaforo2";
             this.pbSemaforo2.Size = new System.Drawing.Size(240, 358);
@@ -426,7 +426,7 @@
             // 
             // pbSemaforo1
             // 
-            this.pbSemaforo1.Image = global::ControleDeReservatorio.Properties.Resources.yellow;
+            this.pbSemaforo1.Image = global::MonitoramentoDeSemaforo.Properties.Resources.yellow;
             this.pbSemaforo1.Location = new System.Drawing.Point(49, 32);
             this.pbSemaforo1.Name = "pbSemaforo1";
             this.pbSemaforo1.Size = new System.Drawing.Size(240, 358);
@@ -441,7 +441,7 @@
             this.btnRegiterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegiterUser.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegiterUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(215)))));
-            this.btnRegiterUser.Image = global::ControleDeReservatorio.Properties.Resources.Contact;
+            this.btnRegiterUser.Image = global::MonitoramentoDeSemaforo.Properties.Resources.Contact;
             this.btnRegiterUser.Location = new System.Drawing.Point(0, 218);
             this.btnRegiterUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRegiterUser.Name = "btnRegiterUser";
@@ -455,7 +455,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ControleDeReservatorio.Properties.Resources.Usuario;
+            this.pictureBox1.Image = global::MonitoramentoDeSemaforo.Properties.Resources.Usuario;
             this.pictureBox1.Location = new System.Drawing.Point(103, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
