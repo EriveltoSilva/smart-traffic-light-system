@@ -77,7 +77,7 @@ namespace ControleDeReservatorio
                     cbSerialPort.Enabled = false;
                     btnUpdateSerialPorts.Enabled = false;
                     pnl_serial.Visible = false;
-                    MessageBox.Show("Comunicação com os Reservatórios Estabelecida com Sucesso!", "Comunicação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Comunicação com os Semaforos Estabelecida com Sucesso!", "Comunicação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch
                 {
@@ -129,7 +129,8 @@ namespace ControleDeReservatorio
 
         private void sendDataToArduino(String data)
         {
-            serialPort1.Write(data);
+            if(serialPort1 != null && serialPort1.IsOpen)
+                serialPort1.Write(data);
         }
 
         private void closeWebCam()
@@ -166,14 +167,33 @@ namespace ControleDeReservatorio
                 if(dados[5] == "N")
                 {
                     modoProjecto = 'N';
+
                     btnEmergencia1.Text = "Activar Emergência";
                     btnEmergencia1.ForeColor = Color.Green;
+
+                    btnPedestre1.Text = "Pedestre 1 desactivado";
+                    btnPedestre1.ForeColor = Color.Yellow;
+                    
+                    btnPedestre2.Text = "Pedestre 2 desactivado";
+                    btnPedestre2.ForeColor = Color.Yellow;
+                }
+                else if (dados[5] == "P")
+                {
+                    modoProjecto = 'P';
+                    btnPedestre1.Text = "Pedestre 1 activado";
+                    btnPedestre1.ForeColor = Color.FromArgb(255, 72, 61);
+                }
+                else if (dados[5] == "p")
+                {
+                    modoProjecto = 'p';
+                    btnPedestre2.Text = "Pedestre 2 activado";
+                    btnPedestre2.ForeColor = Color.FromArgb(210, 72, 61);
                 }
                 else
                 {
                     modoProjecto = 'E';
                     btnEmergencia1.Text = "Desactivar Emergência";
-                    btnEmergencia1.ForeColor = Color.Red;
+                    btnEmergencia1.ForeColor = Color.FromArgb(255, 72, 61);
                 }
             }
         }
@@ -245,8 +265,29 @@ namespace ControleDeReservatorio
 
         private void btnEmergencia_Click(object sender, EventArgs e)
         {
-            sendDataToArduino((modoProjecto == 'N')?"E":"N");
+            //if(modoProjecto=='E') 
+            //    sendDataToArduino("N");
+            //else
+            //    sendDataToArduino("E");
+            sendDataToArduino((modoProjecto != 'N')?"N":"E");
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //if (modoProjecto == 'p')
+            //    sendDataToArduino("N");
+            //else
+            //    sendDataToArduino("p");
+            sendDataToArduino((modoProjecto != 'N') ? "N" : "p");
+        }
+
+        private void btnPedestre1_Click(object sender, EventArgs e)
+        {
+            //if (modoProjecto == 'P')
+            //    sendDataToArduino("N");
+            //else
+            //    sendDataToArduino("P");
+            sendDataToArduino((modoProjecto != 'N') ? "N" : "P");
+        }
     }
 }

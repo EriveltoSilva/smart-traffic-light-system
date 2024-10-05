@@ -173,20 +173,17 @@ char getEstadoSemaforo(int num) {
     else if (digitalRead(led_amarelo_1)) return 'y';
     else if (digitalRead(led_vermelho_1)) return 'r';
     else return 'd';
-  } 
-  else if (num == 2) {
+  } else if (num == 2) {
     if (digitalRead(led_verde_2)) return 'g';
     else if (digitalRead(led_amarelo_2)) return 'y';
     else if (digitalRead(led_vermelho_2)) return 'r';
     else return 'd';
-  } 
-  else if (num == 3) {
+  } else if (num == 3) {
     if (digitalRead(led_verde_3)) return 'g';
     else if (digitalRead(led_amarelo_3)) return 'y';
     else if (digitalRead(led_vermelho_3)) return 'r';
     else return 'd';
-  } 
-  else if (num == 4) {
+  } else if (num == 4) {
     if (digitalRead(led_verde_4)) return 'g';
     else if (digitalRead(led_amarelo_4)) return 'y';
     else if (digitalRead(led_vermelho_4)) return 'r';
@@ -205,7 +202,7 @@ String lerEstados() {
 }
 
 void enviarDados() {
-  Serial.println("D*" + lerEstados()+String(modo)+"*");
+  Serial.println("D*" + lerEstados() + String(modo) + "*");
 }
 
 
@@ -531,12 +528,27 @@ void modo_emergencia() {
   modo_vermelho_4();
 }
 
+void modo_pedestre1(){
+  modo_verde_1();
+  modo_vermelho_2();
+  modo_verde_3();
+  modo_vermelho_4();
+}
+
+void modo_pedestre2(){
+  modo_vermelho_1();
+  modo_verde_2();
+  modo_vermelho_3();
+  modo_verde_4();
+}
+
 void modo_alerta() {
   modo_amarelo_1();
   modo_amarelo_2();
   modo_amarelo_3();
   modo_amarelo_4();
 }
+
 void modo_apagados() {
   digitalWrite(led_verde_1, LOW);
   digitalWrite(led_amarelo_1, LOW);
@@ -633,11 +645,11 @@ void loop() {
     }
 
     //------------------Contando engarrafamento----------------------
-    contadorEngarrafamento=0;
-    if(haCarro1)contadorEngarrafamento++;
-    if(haCarro2)contadorEngarrafamento++;
-    if(haCarro3)contadorEngarrafamento++;
-    if(haCarro4)contadorEngarrafamento++;
+    contadorEngarrafamento = 0;
+    if (haCarro1) contadorEngarrafamento++;
+    if (haCarro2) contadorEngarrafamento++;
+    if (haCarro3) contadorEngarrafamento++;
+    if (haCarro4) contadorEngarrafamento++;
     if (contadorEngarrafamento == 4) {
       tempo_act = millis();
       if (tempo_act - tempo_ant >= tempo_req) {
@@ -655,7 +667,16 @@ void loop() {
       maquina_de_estado(2);
 
     // maquina_de_estado(1);
-  } else {
+  } 
+  else if(modo == 'P')
+  {
+    modo_pedestre1();
+  }
+  else if(modo == 'p')
+  {
+    modo_pedestre2();
+  }
+  else {
     modo_emergencia();
   }
 
@@ -667,14 +688,17 @@ void loop() {
 
 
 void receberDados() {
-  if (Serial.available()){
-    while(Serial.available())
-    {
-      char rx =(char) Serial.read();
-      if(rx=='N')
+  if (Serial.available()) {
+    while (Serial.available()) {
+      char rx = (char)Serial.read();
+      if (rx == 'N')
         modo = 'N';
-      else if(rx=='E')
+      else if (rx == 'E')
         modo = 'E';
+      else if (rx == 'P')
+        modo = 'P';
+      else if (rx == 'p')
+        modo = 'p';
     }
   }
 }
